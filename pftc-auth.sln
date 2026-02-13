@@ -1,0 +1,16 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "pftc-auth", "pftc-auth\pftc-auth.csproj", "{EBFF768D-1ACA-4AB8-AC89-44D9F33C97F9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EBFF768D-1ACA-4AB8-AC89-44D9F33C97F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EBFF768D-1ACA-4AB8-AC89-44D9F33C97F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EBFF768D-1ACA-4AB8-AC89-44D9F33C97F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EBFF768D-1ACA-4AB8-AC89-44D9F33C97F9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
