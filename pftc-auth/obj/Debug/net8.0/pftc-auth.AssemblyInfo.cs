@@ -10,10 +10,11 @@
 using System;
 using System.Reflection;
 
+[assembly: Microsoft.Extensions.Configuration.UserSecrets.UserSecretsIdAttribute("bdbee429-e5f0-4a63-a9e9-a6266a2e6a2b")]
 [assembly: System.Reflection.AssemblyCompanyAttribute("pftc-auth")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+32056180291a6d489c7e4e619518a7f0a8041b20")]
 [assembly: System.Reflection.AssemblyProductAttribute("pftc-auth")]
 [assembly: System.Reflection.AssemblyTitleAttribute("pftc-auth")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

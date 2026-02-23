@@ -53,4 +53,6 @@ CodeCoverage/
 TestResult.xml
 nunit-*.xml
 
-.idea/
+.idea
+/service-account.json
+/oauth.json
