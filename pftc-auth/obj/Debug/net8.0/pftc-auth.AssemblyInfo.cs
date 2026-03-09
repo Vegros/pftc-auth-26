@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("pftc-auth")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a9cc518a7f20e98bf4ecfc307818e264f513cf89")]
 [assembly: System.Reflection.AssemblyProductAttribute("pftc-auth")]
 [assembly: System.Reflection.AssemblyTitleAttribute("pftc-auth")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

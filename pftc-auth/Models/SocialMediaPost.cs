@@ -14,5 +14,6 @@ public class SocialMediaPost
     [FirestoreProperty]
     public string PostAuthor { get; set; }
     [FirestoreProperty]
-    public DateTimeOffset PostDate { get; set; } 
+    public DateTimeOffset PostDate { get; set; }
+    
 }
