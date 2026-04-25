@@ -1,7 +1,9 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using pftc_auth.DataAccess;
+using pftc_auth.interfaces;
 using pftc_auth.Models;
+using pftc_auth.Services;
 
 namespace pftc_auth.Controllers;
 
@@ -9,11 +11,12 @@ public class SocialController : Controller
 {
     private FirestoreRepository _repo;
     private ILogger<SocialController> _logger;
-    
-    public SocialController(ILogger<SocialController> logger, FirestoreRepository repo)
+    private readonly IBucketStorageService _bucketStorageService;
+    public SocialController(ILogger<SocialController> logger, FirestoreRepository repo, IBucketStorageService bucketStorageService)
     {
         _repo = repo;
         _logger = logger;
+        _bucketStorageService = bucketStorageService;
     }
 
     // GET
@@ -32,6 +35,23 @@ public class SocialController : Controller
         p.PostDate = DateTimeOffset.UtcNow;
         await _repo.CreatePost(p);
         return RedirectToAction("Index","Social");
+    }
+    
+    [Authorize]
+    [HttpPost]
+    public async Task<IActionResult> UploadImage(IFormFile file)
+    {
+        try
+        {
+            string fileNameForStorage = $"{Guid.NewGuid()}{Path.GetExtension(file.FileName)}";
+            string imageUrl = await _bucketStorageService.UploadFileAsync(file, fileNameForStorage);
+            return Ok(new { success = true, imageUrl });
+        }
+        catch (Exception e)
+        {
+            _logger.LogError("Error uploading image: {Message}", e.Message);
+            return StatusCode(500, "Error uploading image: " + e.Message);
+        }
     }
     
     //Delete
@@ -70,7 +90,7 @@ public class SocialController : Controller
     //Update
     [Authorize]
     [HttpPut]
-    public async Task<IActionResult> UpdatePost()
+    public async Task<IActionResult> UpdatePost(SocialMediaPost p)
     {
         //await _repo.UpdatePost()
         return RedirectToAction("Index","Social");

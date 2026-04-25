@@ -2,6 +2,8 @@ using System.Security.Claims;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.Google;
 using pftc_auth.DataAccess;
+using pftc_auth.interfaces;
+using pftc_auth.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,7 +13,9 @@ Environment.SetEnvironmentVariable(
     builder.Configuration["Authentication:Google:Credentials"]
 );
 
-builder.Services.AddSingleton<FirestoreRepository>();
+var secretManager = new GoogleSecretManagerService(builder.Configuration["Authentication:Google:ProjectId"],
+    builder.Services.BuildServiceProvider().GetRequiredService<ILogger<GoogleSecretManagerService>>());
+await secretManager.LoadSecretsIntoConfigurationAsync(builder.Configuration);
 
 builder.Services.AddAuthentication(options =>
     {
@@ -44,6 +48,9 @@ builder.Services.AddAuthentication(options =>
 
 builder.Services.AddAuthorization();
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddScoped<FirestoreRepository>();
+builder.Services.AddScoped<IBucketStorageService, BucketStorageService>();
 
 var app = builder.Build();
 
